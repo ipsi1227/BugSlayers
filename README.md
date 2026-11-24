@@ -6,40 +6,8 @@ A hyperlocal, voice-first job matching web platform connecting semi-skilled work
 
 ---
 
-## 🌟 Hackathon Sponsor Technology Integrations
-
-### 1. 🎙️ ElevenLabs — KaamVoice Accessibility
-Target users include daily wage earners, helpers, and tradespeople who may have limited literacy, difficulty reading English, or limited digital experience.
-
-- **Listen to Job (सुनें)**: Every job posting features a prominent **KaamVoice** audio button that reads out the job title, wage, location, duration, hours, and duties in clear, natural Hindi or English.
-- **Audio Model**: Uses official ElevenLabs API with `eleven_multilingual_v2` and natural multilingual Indian voices (`pNInz6obpgDQGcFmaJgB` / `21m00Tcm4TlvDq8ikWAM`).
-- **Application Confirmation**: Before 1-tap applying, workers can tap "Listen to confirmation before applying" to hear a spoken recap of the job details, wage, and locality before confirming.
-- **Server-Side Security**: ElevenLabs API key is strictly maintained on the server-side (`server/ttsService.js`). Keys are never exposed to client-side code or browser network inspection.
-- **Zero-Failure Fallback**: If an ElevenLabs API key is not configured, rate-limited, or offline, the platform seamlessly falls back to the browser's built-in `window.speechSynthesis` (SpeechSynthesisUtterance) engine with `hi-IN` and `en-IN` voices. The audio feature is **100% functional and testable immediately out-of-the-box**.
-- **Audio Caching**: Audio chunks are cached in memory to minimize API latency and token cost.
-
-### 2. ☁️ AWS — Serverless Cloud Backend Architecture
-Designed with a clean, decoupled AWS serverless architecture:
-
-```
-[ Client / Web App ]
-         │
-         ▼  (HTTPS / REST)
-[ Amazon API Gateway ]
-         │
-         ▼  (Proxy Event)
-[ AWS Lambda Function ] (server/lambda.js + server/index.js)
-   ├── Amazon DynamoDB
-   │     ├── KaamNearby_Jobs (Partition Key: id)
-   │     └── KaamNearby_Applications (Partition Key: id, GSI: jobId, workerPhone)
-   ├── Amazon S3 (Audio cache / job attachments)
-   └── ElevenLabs TTS API (Secure outbound call)
-```
-
 - **Dual Operating Modes**:
-  - **Demo Mode**: Instant offline operation using browser `localStorage` and a rich seed dataset of 14 realistic Bengaluru job listings. Zero setup required for evaluation.
-  - **Cloud Mode**: Connects to the Express / AWS Lambda REST API (`/api/jobs`, `/api/applications`, `/api/voice/tts`). Switchable with a single click on the header badge.
-
+  - **Demo Mode**: Instant offline operation using browser `localStorage` and a rich seed dataset of 14 realistic Bengaluru job listings.
 ---
 
 ## 🚀 Core Implemented MVPs
