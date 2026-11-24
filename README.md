@@ -120,9 +120,9 @@ kaam-nearby/
 ## 🛠️ Technologies Used
 
 - **Frontend**: React 18, TypeScript, Vite, Tailwind CSS, Lucide React, React Router v6.
-- **Audio & Voice AI**: ElevenLabs Text-to-Speech REST API (`eleven_multilingual_v2`), Web Speech API (`SpeechRecognition` & `SpeechSynthesis`).
-- **Backend & Cloud**: Node.js, Express, AWS Lambda (`serverless-http`), Amazon DynamoDB client, CORS, Dotenv.
-- **Storage**: `localStorage` (Demo Mode) and REST API / DynamoDB (Cloud Mode).
+- **Audio & Voice AI**
+- **Backend & Cloud**: Node.js, Express.
+- **Storage**: `localStorage` (Demo Mode) .
 
 ---
 
